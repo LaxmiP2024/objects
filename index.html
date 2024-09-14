@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // return the subject in which the student got the least marks
+        // let obj = [
+        //     { name: "ramu", marks: { s1: 28, s2: 30, s3: 49 } }, //s1
+        //     { name: "raju", marks: { s1: 20, s2: 50, s3: 40 } },  //s1
+        //     { name: "raghu", marks: { s1: 35, s2: 30, s3: 47 } }, //s2
+        // ];
+        debugger
+
+        let obj = [
+            { name: "ramu", marks: { s1: 28, s2: 30, s3: 49 } },
+            { name: "raju", marks: { s1: 20, s2: 50, s3: 40 } },
+            { name: "raghu", marks: { s1: 35, s2: 30, s3: 47 } },
+        ]
+        for (i of obj) {
+            for (j in i) {
+                if (j == "marks") {
+                    let min = i[j]["s1"]
+                    for (k in i[j]) {
+                        if (min > i[j][k]) {
+                            min = i[j][k]
+                        }
+                    }
+                    for (k in i[j]) {
+                        if (i[j][k] == min) {
+                            i[j]["sub"] = k
+
+                        }
+                    }
+                }
+            }
+        }
+        console.log(obj);
+
+
+        // Calculate the avg of marks and add it to the object
+        // let obj = [
+        //     { name: "ramu", marks: { s1: 28, s2: 30, s3: 49 }, avg: 30 },
+        //     { name: "raju", marks: { s1: 20, s2: 50, s3: 40 }, avg: 30 },
+        //     { name: "raghu", marks: { s1: 35, s2: 30, s3: 47 }, avg: 30 },
+        // ];
+
+        let objs = [
+            { name: "ramu", marks: { s1: 28, s2: 30, s3: 49 }, avg: 0 },
+            { name: "raju", marks: { s1: 20, s2: 50, s3: 40 }, avg: 0 },
+            { name: "raghu", marks: { s1: 35, s2: 30, s3: 47 }, avg: 0 },
+        ];
+
+        for (let i = 0; i < objs.length; i++) {
+            let totalMarks = 0;
+            let subjects = 0;
+            for (let subject in objs[i].marks) {
+                totalMarks += objs[i].marks[subject];
+                subjects++;
+            }
+            let avgMarks = totalMarks / subjects;
+            objs[i].avg = avgMarks;
+        }
+        console.log(objs);
+
+
+    </script>
+</body>
+
+</html>
